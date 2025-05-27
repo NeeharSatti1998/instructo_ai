@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.ipynb_checkpoints
+
+# TTS outputs
+tts_audio/
+images/
+output/
+*.wav
+*.mp4
+
+# Environment
+.env
+.venv/
+*.log
+*.db
+
+# OS
+.DS_Store
+Thumbs.db

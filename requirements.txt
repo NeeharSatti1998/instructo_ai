@@ -1,0 +1,5 @@
+streamlit==1.45.1
+TTS==0.22.0
+moviepy==2.2.1
+requests
+numpy==1.22.0

@@ -1,0 +1,67 @@
+{
+  "last_node_id": 10,
+  "last_link_id": 20,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "CheckpointLoaderSimple",
+      "pos": [0, 0],
+      "widgets_values": ["dreamshaper_8.safetensors"]
+    },
+    {
+      "id": 10,
+      "type": "LoraLoader",
+      "pos": [300, 0],
+      "widgets_values": ["O1-Kurzgesagt.safetensors", 1, 1]
+    },
+    {
+      "id": 2,
+      "type": "CLIPTextEncode",
+      "pos": [600, 0],
+      "widgets_values": ["positive prompt here"]
+    },
+    {
+      "id": 7,
+      "type": "CLIPTextEncode",
+      "pos": [600, 200],
+      "widgets_values": ["text, watermark, blurry, low quality, distortion"]
+    },
+    {
+      "id": 3,
+      "type": "EmptyLatentImage",
+      "pos": [600, 400],
+      "widgets_values": [768, 768, 1]
+    },
+    {
+      "id": 4,
+      "type": "KSampler",
+      "pos": [900, 100],
+      "widgets_values": [123456789, "randomize", 30, 9, "euler", "normal", 1]
+    },
+    {
+      "id": 5,
+      "type": "VAEDecode",
+      "pos": [1200, 100],
+      "widgets_values": []
+    },
+    {
+      "id": 6,
+      "type": "SaveImage",
+      "pos": [1500, 100],
+      "widgets_values": ["AutoDocScene"]
+    }
+  ],
+  "links": [
+    [10, 1, 0, 10, 0, "MODEL"],
+    [11, 1, 1, 10, 1, "CLIP"],
+    [12, 10, 1, 2, 0, "CLIP"],
+    [13, 10, 1, 7, 0, "CLIP"],
+    [14, 10, 0, 4, 0, "MODEL"],
+    [15, 7, 0, 4, 2, "CONDITIONING"],
+    [16, 2, 0, 4, 1, "CONDITIONING"],
+    [17, 3, 0, 4, 3, "LATENT"],
+    [18, 4, 0, 5, 0, "LATENT"],
+    [19, 1, 2, 5, 1, "VAE"],
+    [20, 5, 0, 6, 0, "IMAGE"]
+  ]
+}
